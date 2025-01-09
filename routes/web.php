@@ -41,13 +41,11 @@ Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware(
 Route::get('logoutAksi', [LoginController::class, 'logoutAksi'])->name('logoutAksi')->middleware('auth');
 
 
-Route::middleware(['auth', 'role:admin'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::resource('admin/profil_sejarah', ProfilSejarahController::class);
 });
 
-Route::middleware(['auth', 'role:user'])->group(function () {
-    Route::get('/user', [App\Http\Controllers\UserController::class, 'index'])->name('user.sejarah.index');
-});
+Route::get('/user', [App\Http\Controllers\UserController::class, 'index'])->name('user.sejarah.index');
 
 
 
